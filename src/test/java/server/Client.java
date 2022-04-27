@@ -11,11 +11,18 @@ import java.net.http.HttpResponse;
 
 public class Client {
     public static void main(String[] args) {
+        //создали клиент
         HttpClient client = HttpClient.newHttpClient();
+
+//объект класса запроса, отправляем запрос на сервер  с заголовком хеллоу
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:4446/"))
-                .header ( "Type","Hello")
+                .uri(URI.create("http://localhost:4450/home4"))
+                .header ( "Type","Home4")
                 .build();
+
+
+
+//создание ответа, создание переменной куда сохраним ответ
         HttpResponse<String> response = null;
 
         try {
@@ -24,7 +31,10 @@ public class Client {
             e.printStackTrace();
         }
 
+        //вывод тела ответа
         System.out.println(response.body());
+
+
 
         getSome();
 
@@ -35,8 +45,8 @@ public class Client {
 
         HttpClient client5 = HttpClient.newHttpClient();
         HttpRequest request5 = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:4446/page5"))
-                .header ( "Type","Hello")
+                .uri(URI.create("http://localhost:4450/home5"))
+                .header ( "Type","Home5")
                 .build();
         HttpResponse<String> response5 = null;
 
@@ -46,19 +56,20 @@ public class Client {
             e.printStackTrace();
         }
 
-        System.out.println("55555555555dsfsdf");
+        System.out.println("концовка");
 
     }
 
 
 
 
-
+//клиент через мавен
     public static void getSome() {
         try{
+            //HttpResponse такой класс уже есть поэтому точный путь указан
         com.mashape.unirest.http.HttpResponse<String> response = Unirest
-                .get("http://localhost:4446/")
-                .header("Type", "Hello")
+                .get("http://localhost:4450/home5")
+                .header("Type", "Home5")
                 .asString();
             System.out.println(response.getBody());
     }catch (UnirestException e){
